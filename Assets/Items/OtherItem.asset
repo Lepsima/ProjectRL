@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc617f8f57ec4676a87bd53cfac4c66c, type: 3}
   m_Name: OtherItem
   m_EditorClassIdentifier: 
-  name: 
-  info: 
-  stackSize: 0
+  name: Other Item
+  info: Item 2
+  stackSize: 15

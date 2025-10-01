@@ -265,7 +265,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2065891380}
-  - component: {fileID: 2065891381}
   m_Layer: 0
   m_Name: InventoryTest
   m_TagString: Untagged
@@ -288,22 +287,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2065891381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065891378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a884e3b920df40f281765d36df1a3810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots: 7
-  initialItems:
-  - itemData: {fileID: 11400000, guid: e9424f7ef50e8bb4d862aac3358f6e19, type: 2}
-    count: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
