@@ -34,16 +34,13 @@ public class EnemyMovement : MonoBehaviour
         }
 
         //Movimiento
-
         rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
-
-
-        // Area de radio
-         void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position,detectionradius);
-        }
-
+    }
+    
+    // Area de radio
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,detectionradius);
     }
 }
