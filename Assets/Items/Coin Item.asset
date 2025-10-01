@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc617f8f57ec4676a87bd53cfac4c66c, type: 3}
+  m_Name: Coin Item
+  m_EditorClassIdentifier: 
+  name: Coin
+  stackSize: 16
+  icon: {fileID: 7675826601332790545, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  frameTime: 0.1
+  frames:
+  - {fileID: 7675826601332790545, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: -675104096977794455, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: -4412926668834298731, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: -4862007459847594908, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: -7914957615168794202, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: 2278881825021241808, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: 1763547749914876530, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: 5999283557275819326, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: -1468538274757268107, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: -7420241631526070820, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: -5387031686188697322, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
+  - {fileID: -2681995995293344776, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}

@@ -4,6 +4,13 @@ using UnityEngine;
 using static UnityEngine.Mathf;
 using static UnityEngine.Quaternion;
 
+/// <summary>
+/// A class containing extension methods I often use, includes:
+/// Framerate independent smoothing,
+/// LINQ style foreach loops,
+/// Type casting,
+/// Vector2 to degrees
+/// </summary>
 // ReSharper disable once CheckNamespace
 public static class Extensions {
 	// The exact same thing as "Mathf.SmoothStep" but replaced the parameters with vector3's, should be built-in

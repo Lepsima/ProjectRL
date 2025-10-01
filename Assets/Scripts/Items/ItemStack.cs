@@ -17,14 +17,20 @@ public class ItemStack {
 		this.isStackLimited = true;
 	}
 
+	public static ItemStack CreateStackFrom(ItemStack source) {
+		ItemStack newStack = new(source.itemData, 0);
+		newStack.Give(source);
+		return newStack;
+	}
+
 	public void Give(ItemStack other) {
-		uint maxGive = Math.Max(other.count, RemainingSpace);
+		uint maxGive = Math.Min(other.count, RemainingSpace);
 		count += maxGive;
 		other.count -= maxGive;
 	}
 
 	public void Take(ItemStack other) {
-		uint maxTake = Math.Max(count, other.RemainingSpace);
+		uint maxTake = Math.Min(count, other.RemainingSpace);
 		count -= maxTake;
 		other.count += maxTake;
 	}

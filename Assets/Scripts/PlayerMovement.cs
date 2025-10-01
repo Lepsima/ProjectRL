@@ -13,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
     public float longitudRaycast;
     public LayerMask capasuelo;
     private bool enSuelo;
-
-
     
     void Start()
     {
@@ -52,18 +50,4 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * longitudRaycast);
     }
-
-    //Variables moneda
-    private int coins;
-    public TMP_Text textcoins;
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.CompareTag("Coin"))
-        {
-            Destroy(collision.gameObject);
-            coins++;
-            textcoins.text = coins.ToString();
-        }
-    }
-
 }

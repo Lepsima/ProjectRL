@@ -1,8 +1,8 @@
-﻿using Items;
+﻿using System;
+using Items;
 
 namespace Inventory {
 public interface IInventory {
-
 	public void AddItems(ItemStack other);
 
 	public void RemoveItems(ItemStack other);
