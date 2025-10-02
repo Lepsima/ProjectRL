@@ -1,4 +1,5 @@
 using TMPro;
+using UI;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -42,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
         if(enSuelo && Input.GetKeyDown(KeyCode.Space))
         {
             rb2D.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+        
+        // Open/Close Inventory UI
+        if (Input.GetKeyDown(KeyCode.I)) {
+            InventoryUI.ToggleUI();
         }
     }
 

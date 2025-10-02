@@ -11,6 +11,8 @@ public interface IInventory {
 	
 	public uint GetItemCount(ItemData item);
 	
+	public ItemStack GetStackAt(int index);
+	
 	public void ClearItem(ItemData item);
 
 	public void ClearAll();

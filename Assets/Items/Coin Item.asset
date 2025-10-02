@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coin Item
   m_EditorClassIdentifier: 
   name: Coin
-  stackSize: 16
+  stackSize: 4
   icon: {fileID: 7675826601332790545, guid: 51ddab5feca02554cbeec6de3482b23d, type: 3}
   frameTime: 0.1
   frames:

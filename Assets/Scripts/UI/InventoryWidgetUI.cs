@@ -6,7 +6,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI {
-public class InventoryUIWidget : MonoBehaviour {
+/// <summary>
+/// Keeps track of a specific item's count inside an inventory
+/// For example: displaying the total coin count without looking in the inventory
+/// </summary>
+public class InventoryWidgetUI : MonoBehaviour {
 	public TMP_Text itemName;
 	public TMP_Text itemCount;
 	public Image itemIcon;

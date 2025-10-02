@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Inventory {
 public class InventoryContainer : MonoBehaviour, IInventory {
-	public int slots = 7;
+	public int slotCount = 7;
 	public ItemStack[] initialItems = Array.Empty<ItemStack>();
 
 	public Action<InventoryEventArgs> OnItemValueChanged;
@@ -16,16 +16,16 @@ public class InventoryContainer : MonoBehaviour, IInventory {
 	private uint _startStack;
 	
 	private void Awake() {
-		if (initialItems.Length > slots) {
+		if (initialItems.Length > slotCount) {
 			Debug.LogError("Inventory container has more initial items than slots");
 			return;
 		}
-		
+
 		initialItems.ForEach(i => items.Add(i));
 	}
 
 	private bool HasEmptySlots() {
-		return items.Count < slots;
+		return items.Count < slotCount;
 	}
 
 	private IEnumerable<ItemStack> GetMatchingSlots(ItemData item) {
@@ -93,7 +93,11 @@ public class InventoryContainer : MonoBehaviour, IInventory {
 	public uint GetItemCount(ItemData item) {
 		return (uint)GetMatchingSlots(item).Sum(stack => stack.count);
 	}
-	
+
+	public ItemStack GetStackAt(int index) {
+		return index >= items.Count ? new ItemStack(null, 0) : items[index];
+	}
+
 	public void ClearItem(ItemData item) {
 		StartCheck(new ItemStack(item, 0));
 		bool changed = false;
