@@ -10,9 +10,7 @@ public class CamaraController : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 posiciondeseada = objetivo.position + desplazamiento;
-
-        Vector3 posicionSuavizada = Vector3.Lerp(transform.position, posiciondeseada, velocidadCamara);
-
+        Vector3 posicionSuavizada = transform.position.ExpDecay(posiciondeseada, velocidadCamara, Time.deltaTime);
         transform.position = posicionSuavizada;
     }
 
