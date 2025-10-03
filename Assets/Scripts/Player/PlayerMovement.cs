@@ -1,3 +1,4 @@
+using Environment;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -13,10 +14,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float longitudRaycast;
     public LayerMask capasuelo;
+    
+    private WalkParticles walkParticles;
     private bool enSuelo;
     
     void Start()
     {
+        walkParticles = GetComponent<WalkParticles>();
         rb2D = GetComponent<Rigidbody2D>();
     }
 
@@ -38,12 +42,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 position = transform.position;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capasuelo);
-        enSuelo = hit.collider != null;
+        enSuelo = hit.collider;
 
-        if(enSuelo && Input.GetKeyDown(KeyCode.Space))
-        {
-            rb2D.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        if (enSuelo) {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                rb2D.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            }
         }
+
+       
         
         // Open/Close Inventory UI
         if (Input.GetKeyDown(KeyCode.I)) {
