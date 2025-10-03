@@ -7,7 +7,7 @@ namespace UI {
 public class InventorySlotUI : MonoBehaviour {
 	public TMP_Text itemCount;
 	public Image itemIcon;
-	private ItemStack stack;
+	public ItemStack stack;
 	
 	public void SetStack(ItemStack stack) {
 		this.stack = stack;
@@ -17,6 +17,10 @@ public class InventorySlotUI : MonoBehaviour {
 		if (!isValid) return;
 		itemIcon.sprite = stack.itemData.icon;
 		itemCount.text = stack.count.ToString();
+	}
+
+	public void SelectThis() {
+		InventoryUI.Instance.SelectSlot(this);
 	}
 }
 }

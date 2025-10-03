@@ -1,7 +1,9 @@
 ﻿using System;
 using Inventory;
 using Items;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI {
 
@@ -14,10 +16,17 @@ public class InventoryUI : MonoBehaviour {
 	public InventoryContainer inventory;
 	public Transform slotParent;
 	public GameObject slotPrefab;
+
+	[Space] 
+	public TMP_Text itemName;
+	public TMP_Text itemCount;
+	public TMP_Text itemInfo;
+	public Image itemImage;
 	
 	[Space]
 	public InventoryWidgetUI[] widgetsToDeactivate;
 	private InventorySlotUI[] slots;
+	private InventorySlotUI selectedSlot;
 	
 	private void Awake() {
 		Instance = this;
@@ -35,6 +44,16 @@ public class InventoryUI : MonoBehaviour {
 		for (int i = 0; i < inventory.slotCount; i++) {
 			slots[i].SetStack(inventory.GetStackAt(i));
 		}
+	}
+
+	public void SelectSlot(InventorySlotUI slot) {
+		selectedSlot = Equals(selectedSlot, slot) ? null : slot;
+		if (!selectedSlot) return;
+		
+		itemName.text = slot.stack.itemData.name;
+		itemInfo.text = slot.stack.itemData.info;
+		itemCount.text = slot.stack.count + "";
+		itemImage.sprite = slot.stack.itemData.icon;
 	}
 
 	public static void ToggleUI() {

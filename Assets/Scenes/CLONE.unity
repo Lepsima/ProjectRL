@@ -238,8 +238,8 @@ RectTransform:
   m_Children:
   - {fileID: 1119617021}
   - {fileID: 1820639561}
-  - {fileID: 63412092}
   - {fileID: 467365471}
+  - {fileID: 63412092}
   m_Father: {fileID: 401717597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 63412094}
   - component: {fileID: 63412093}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,6 +965,10 @@ MonoBehaviour:
   inventory: {fileID: 1732715395}
   slotParent: {fileID: 958114545}
   slotPrefab: {fileID: 2783382347645185299, guid: f87f989aa4fee014496ed30279cdb74e, type: 3}
+  itemName: {fileID: 1119617022}
+  itemCount: {fileID: 1820639562}
+  itemInfo: {fileID: 467365472}
+  itemImage: {fileID: 63412093}
   widgetsToDeactivate:
   - {fileID: 150567578}
 --- !u!1 &437472295
@@ -1010,7 +1014,7 @@ GameObject:
   - component: {fileID: 467365473}
   - component: {fileID: 467365472}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1082,8 +1086,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3918,7 +3922,7 @@ GameObject:
   - component: {fileID: 1119617023}
   - component: {fileID: 1119617022}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4226,7 +4230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00b35673fe08d3489b0b14a7439786e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: {x: 25, y: 0}
+  velocidadMovimiento: {x: 50, y: 0}
 --- !u!212 &1330468549
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4327,7 +4331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00b35673fe08d3489b0b14a7439786e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: {x: 50, y: 0}
+  velocidadMovimiento: {x: 125, y: 0}
 --- !u!212 &1408930578
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4728,7 +4732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00b35673fe08d3489b0b14a7439786e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: {x: 75, y: 0}
+  velocidadMovimiento: {x: 200, y: 0}
 --- !u!212 &1722248870
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5186,7 +5190,7 @@ GameObject:
   - component: {fileID: 1820639563}
   - component: {fileID: 1820639562}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
