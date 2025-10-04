@@ -15,6 +15,7 @@ public class Dialogue : MonoBehaviour
     private bool didDialogueStart;
     private int lineIndex;
 
+    //Codigo Ejecutable
      void Update()
     {
         if(playerinRange && Input.GetButtonDown("Fire1"))
@@ -30,7 +31,7 @@ public class Dialogue : MonoBehaviour
     {
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
-       // dialogueMark.SetActive(false);
+        dialogueMark.SetActive(false);
         lineIndex = 0;
         StartCoroutine(ShowLine());
     }
@@ -51,7 +52,7 @@ public class Dialogue : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerinRange = true;
-           // dialogueMark.SetActive(true);
+            dialogueMark.SetActive(true);
         }
        
     }
@@ -61,7 +62,7 @@ public class Dialogue : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerinRange = false;
-           // dialogueMark.SetActive(false);
+            dialogueMark.SetActive(false);
         }
         
     }
