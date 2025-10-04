@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask capasuelo;
     
     private WalkParticles walkParticles;
+    public float stepDistance = 0.5f;
+    private float walkedDistance = 0.0f;
     private bool enSuelo;
     
     void Start()
@@ -29,29 +31,32 @@ public class PlayerMovement : MonoBehaviour
     {
         //Codigo de Movimiento
         move = Input.GetAxis("Horizontal");
-        rb2D.linearVelocity = new Vector2(move * speed, rb2D.linearVelocity.y);
+        Vector2 vel = new(move * speed, rb2D.linearVelocity.y);
+        rb2D.linearVelocity = vel;
 
+        
         //Rotacion del personaje
-        if(move != 0)
-        {
+        if(move != 0) {
             transform.localScale = new Vector3(Mathf.Sign(move), 1, 1);
         }
 
         //Codigo Salto
-
-        Vector3 position = transform.position;
-
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capasuelo);
-        enSuelo = hit.collider;
+        bool grounded = hit.collider;
 
-        if (enSuelo) {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
+        if (grounded) {
+            walkedDistance += vel.magnitude * Time.deltaTime;
+
+            if (Input.GetKeyDown(KeyCode.Space)) { 
                 rb2D.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             }
         }
 
-       
+        // Spawn step particles
+        if (walkedDistance > stepDistance) {
+            walkedDistance -= stepDistance;
+            walkParticles.Step(WorldGrid.Instance.GetTileAt(transform.position - new Vector3(0f, longitudRaycast, 0f)));
+        }
         
         // Open/Close Inventory UI
         if (Input.GetKeyDown(KeyCode.I)) {

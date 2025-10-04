@@ -10,7 +10,7 @@ public class TerrainParticles : MonoBehaviour {
 	public class ParticleSet {
 		public ParticleSystem walkParticles;
 		public ParticleSystem impactParticles;
-		public Tile[] tiles;
+		public TileBase[] tiles;
 
 		public void CreatePools() {
 			ParticlePoolManager.CreatePool(walkParticles);
@@ -26,8 +26,8 @@ public class TerrainParticles : MonoBehaviour {
 	}
 
 	public class ParticleInstance {
-		public ParticleSystem particles;
-		public ParticleSystem prefab;
+		public readonly ParticleSystem particles;
+		public readonly ParticleSystem prefab;
 
 		public ParticleInstance(ParticleSystem prefab) {
 			particles = ParticlePoolManager.Get(prefab);
@@ -43,7 +43,7 @@ public class TerrainParticles : MonoBehaviour {
 	public static TerrainParticles Instance;
 	
 	public ParticleSet[] sets;
-	private readonly Dictionary<Tile, int> tileMap = new();
+	private readonly Dictionary<TileBase, int> tileMap = new();
 
 	private void Awake() {
 		Instance = this;
@@ -57,7 +57,7 @@ public class TerrainParticles : MonoBehaviour {
 		}
 	}
 	
-	public ParticleInstance GetParticles(Tile tile, Intensity intensity) {
+	public ParticleInstance GetParticles(TileBase tile, Intensity intensity) {
 		if (!tileMap.TryGetValue(tile, out int index)) return null;
 		
 		ParticleSet set = sets[index];
