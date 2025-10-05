@@ -5660,7 +5660,7 @@ MonoBehaviour:
   capasuelo:
     serializedVersion: 2
     m_Bits: 128
-  stepDistance: 0.5
+  stepDistance: 1
 --- !u!212 &1732715392
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6310,7 +6310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1732715394}
-  detectionradius: 2
+  detectionRadius: 2
   speed: 15
 --- !u!1 &1861313569
 GameObject:

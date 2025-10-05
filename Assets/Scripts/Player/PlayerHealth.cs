@@ -4,50 +4,33 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Action<int> OnPlayerDamaged;
+    public Action<int> OnPlayerHealed;
 
-    public Action<int> PlayerTakesDmg;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int health;
 
-    public Action<int> PlayerTakesHealth;
-
-    [SerializeField] private int vidaMaxima;
-
-    [SerializeField] private int vidaActual;
-
-    private void Awake()
-    {
-        vidaActual = vidaMaxima;
+    private void Awake() {
+        health = maxHealth;
     }
 
-    public void TomarDaño(int daño)
-    {
-        int vidaTemporal = vidaActual - daño;
+    public void Damage(int amount) {
+        health = Mathf.Clamp(health - amount,0, maxHealth);
+        OnPlayerDamaged?.Invoke(health);
 
-        vidaTemporal = Mathf.Clamp(vidaTemporal,0, vidaMaxima);
-
-        vidaActual = vidaTemporal;
-
-        PlayerTakesDmg?.Invoke(vidaActual);
-
-        if(vidaActual <= 0)
-        {
-            Destroy(gameObject);
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
+        if (health > 0) return;
+        
+        Destroy(gameObject);
+        UnityEditor.EditorApplication.isPlaying = false;
 
     }
 
-    public void CurarVida(int curacion)
-    {
-        int vidaTemporal = vidaActual + curacion;
-
-        vidaTemporal = Mathf.Clamp(vidaTemporal, 0, vidaMaxima);
-
-        vidaActual = vidaTemporal;
-
-        PlayerTakesHealth?.Invoke(vidaActual);
+    public void Heal(int amount) { 
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+        OnPlayerHealed?.Invoke(health);
     }
 
-    public int GetVidaMaxima() => vidaMaxima;
+    public int GetMaxHealth() => maxHealth;
 
-    public int GetVidaActual() => vidaActual;
+    public int GetHealth() => health;
 }

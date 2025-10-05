@@ -11,17 +11,17 @@ public class ContenderHearts : MonoBehaviour
     {
         healthplayer = FindFirstObjectByType<PlayerHealth>();
 
-        healthplayer.PlayerTakesDmg += ActivateHearts;
-        healthplayer.PlayerTakesHealth += ActivateHearts;
+        healthplayer.OnPlayerDamaged += ActivateHearts;
+        healthplayer.OnPlayerHealed += ActivateHearts;
 
 
-        ActivateHearts(healthplayer.GetVidaActual());
+        ActivateHearts(healthplayer.GetHealth());
     }
 
     private void OnDisable()
     {
-        healthplayer.PlayerTakesDmg -= ActivateHearts;
-        healthplayer.PlayerTakesHealth -= ActivateHearts;
+        healthplayer.OnPlayerDamaged -= ActivateHearts;
+        healthplayer.OnPlayerHealed -= ActivateHearts;
     }
 
 

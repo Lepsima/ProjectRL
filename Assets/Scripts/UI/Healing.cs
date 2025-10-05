@@ -8,7 +8,7 @@ public class Healing : MonoBehaviour
     {
         if (collision.TryGetComponent(out PlayerHealth vidajugador))
         {
-            vidajugador.CurarVida(curaporToque);
+            vidajugador.Heal(curaporToque);
             Destroy(gameObject);
         }
     }
