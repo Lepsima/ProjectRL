@@ -20,9 +20,20 @@ public class Dialogue : MonoBehaviour
     {
         if(playerinRange && Input.GetButtonDown("Fire1"))
         {
-            if (!didDialogueStart) {
+            if (!didDialogueStart)
+            {
                 StartDialogue();
             }
+            else if (dialogueText.text == dialoguelines[lineIndex]) {
+
+                NextDialogue();
+            }
+            else
+            {
+                StopAllCoroutines();
+                dialogueText.text = dialoguelines[lineIndex];
+            }
+                
            
         }
     }
@@ -33,7 +44,25 @@ public class Dialogue : MonoBehaviour
         dialoguePanel.SetActive(true);
         dialogueMark.SetActive(false);
         lineIndex = 0;
+        Time.timeScale = 0f;
         StartCoroutine(ShowLine());
+    }
+
+    private void NextDialogue()
+    {
+        lineIndex++;
+        if (lineIndex < dialoguelines.Length)
+        {
+            StartCoroutine(ShowLine());
+        }
+        else
+        {
+            didDialogueStart = false;
+            dialoguePanel.SetActive(false);
+            dialogueMark.SetActive(true);
+            Time.timeScale = 1f;
+            
+        }
     }
 
     private IEnumerator ShowLine()
@@ -43,7 +72,7 @@ public class Dialogue : MonoBehaviour
         foreach(char ch in dialoguelines[lineIndex])
         {
             dialogueText.text += ch;
-            yield return new WaitForSeconds(typingTime);
+            yield return new WaitForSecondsRealtime(typingTime);
         }
     }
 
