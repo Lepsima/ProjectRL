@@ -12,7 +12,8 @@ namespace UI {
 /// </summary>
 public class InventoryUI : MonoBehaviour {
 	public static InventoryUI Instance;
-	
+
+	public GameObject inventoryPanel;
 	public InventoryContainer inventory;
 	public Transform slotParent;
 	public GameObject slotPrefab;
@@ -37,7 +38,7 @@ public class InventoryUI : MonoBehaviour {
 			slots[i] = Instantiate(slotPrefab, slotParent).GetComponent<InventorySlotUI>();
 		}
 		
-		gameObject.SetActive(false);
+		inventoryPanel.SetActive(false);
 	}
 	
 	private void OnInventoryUpdated(InventoryEventArgs eventArgs) {
@@ -57,8 +58,8 @@ public class InventoryUI : MonoBehaviour {
 	}
 
 	public static void ToggleUI() {
-		bool state = !Instance.gameObject.activeSelf;
-		Instance.gameObject.SetActive(state);
+		bool state = !Instance.inventoryPanel.activeSelf;
+		Instance.inventoryPanel.SetActive(state);
 		Instance.widgetsToDeactivate.ForEach(widget => widget.gameObject.SetActive(!state));
 	}
 }
