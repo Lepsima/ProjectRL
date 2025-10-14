@@ -10,89 +10,72 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(4,6)] private string[] dialoguelines;
 
-    private float typingTime = 0.05f;
+    private readonly float typingTime = 0.05f;
     private bool playerinRange;
     private bool didDialogueStart;
     private int lineIndex;
 
     //Codigo Ejecutable
-     void Update()
-    {
-        if(playerinRange && Input.GetButtonDown("Fire1"))
-        {
-            if (!didDialogueStart)
-            {
-                StartDialogue();
-            }
-            else if (dialogueText.text == dialoguelines[lineIndex]) {
-
-                NextDialogue();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogueText.text = dialoguelines[lineIndex];
-            }
-                
-           
-        }
+    private void Update() {
+         if (!playerinRange || !Input.GetMouseButtonDown(0)) return;
+         
+         if (!didDialogueStart) {
+             StartDialogue();
+         }
+         else if (dialogueText.text == dialoguelines[lineIndex]) {
+             NextDialogue();
+         }
+         else {
+             StopAllCoroutines();
+             dialogueText.text = dialoguelines[lineIndex];
+         }
     }
 
-    private void StartDialogue()
-    {
-        didDialogueStart = true;
+    private void StartDialogue() {
         dialoguePanel.SetActive(true);
         dialogueMark.SetActive(false);
+        
+        didDialogueStart = true;
         lineIndex = 0;
         Time.timeScale = 0f;
+        
         StartCoroutine(ShowLine());
     }
 
-    private void NextDialogue()
-    {
+    private void NextDialogue() {
         lineIndex++;
-        if (lineIndex < dialoguelines.Length)
-        {
+        if (lineIndex < dialoguelines.Length) {
             StartCoroutine(ShowLine());
         }
-        else
-        {
-            didDialogueStart = false;
+        else {
             dialoguePanel.SetActive(false);
             dialogueMark.SetActive(true);
-            Time.timeScale = 1f;
             
+            didDialogueStart = false;
+            Time.timeScale = 1f;
         }
     }
 
-    private IEnumerator ShowLine()
-    {
+    private IEnumerator ShowLine() {
         dialogueText.text = string.Empty;
 
-        foreach(char ch in dialoguelines[lineIndex])
-        {
+        foreach(char ch in dialoguelines[lineIndex]) {
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(typingTime);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            playerinRange = true;
-            dialogueMark.SetActive(true);
-        }
-       
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (!collision.gameObject.CompareTag("Player")) return;
+        
+        playerinRange = true;
+        dialogueMark.SetActive(true);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            playerinRange = false;
-            dialogueMark.SetActive(false);
-        }
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (!collision.gameObject.CompareTag("Player")) return;
         
+        playerinRange = false;
+        dialogueMark.SetActive(false);
     }
 }
